@@ -29,19 +29,23 @@ public class ClassicCryptography {
         return alpha;
     }
     
-    public String encrypt(String plaintext, int key) {
-        //char[] alpha = initAlphabet();
-        
+    /**
+     * 
+     * @param plaintext
+     * @param key
+     * @return 
+     */
+    public String encrypt(String plaintext, int encryptionKey) {
         char[] plain = plaintext.toCharArray();
         String kryptert = "";
         
         for(int i = 0; i < plain.length; i++) {
             for(int j = 0; j < alphabet.length; j++) {
                 if(plain[i] == alphabet[j]) {
-                    if(j + key >= alphabet.length) {
-                        kryptert += alphabet[j + key - alphabet.length];
+                    if(j + encryptionKey >= alphabet.length) {
+                        kryptert += alphabet[j + encryptionKey - alphabet.length];
                     } else {
-                        kryptert += alphabet[j + key]; 
+                        kryptert += alphabet[j + encryptionKey]; 
                     }
                 }
             }
@@ -49,7 +53,7 @@ public class ClassicCryptography {
         return kryptert;
     }
     
-    public String decrypt(String chifertext, int key) {
+    public String decrypt(String ciphertext, int key) {
         return null;
     }
 }

@@ -6,6 +6,9 @@
 package cryptography;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 /**
  *
@@ -13,8 +16,17 @@ import javafx.fxml.FXML;
  */
 public class CryptoController {
     private ClassicCryptography c;
+    private boolean encMode;
+    
+    @FXML public TextField inputString;
+    @FXML public TextField encryptionKey;
+    @FXML public Button encrypt;
+    @FXML public Button mode;
+    @FXML public Label outputResult;
+    
     
     public CryptoController() {
+        encMode = true;
         init();
     }
     
@@ -23,9 +35,34 @@ public class CryptoController {
     }
     
     @FXML
-    public void encrypt() {
-        System.out.println(c.encrypt("xyz", 2));
+    public void encryptionMode() {
+        if(encMode) {
+            outputResult.setText(c.encrypt(inputString.getText(), getKey()));
+            System.out.println("inne");
+        } else {
+            c.decrypt("", getKey());
+        }
+    }
+    
+    private String getInput() {
+        return inputString.getText();
+    }
+    
+    private int getKey() {
+        return Integer.parseInt(encryptionKey.getText());
+    }
+    
+    @FXML
+    public void toggleMode() {
+        encMode = !encMode;
         
+        if(encMode) {
+            encrypt.setText("Encrypt");
+            mode.setText("Encryption");
+        } else {
+            mode.setText("Decryption");
+            encrypt.setText("Decrypt");
+        }
     }
 
     
