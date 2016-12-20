@@ -27,20 +27,17 @@ public class CryptoController {
     
     public CryptoController() {
         encMode = true;
-        init();
-    }
-    
-    private void init() {
         c = new ClassicCryptography();
     }
     
     @FXML
     public void encryptionMode() {
         if(encMode) {
-            outputResult.setText(c.encrypt(inputString.getText(), getKey()));
-            System.out.println("inne");
+            String cipherText = c.encrypt(inputString.getText(), getKey());
+            outputResult.setText(cipherText);
         } else {
-            c.decrypt("", getKey());
+            //c.decrypt("", getKey());
+            System.out.println("dekryptere");
         }
     }
     
