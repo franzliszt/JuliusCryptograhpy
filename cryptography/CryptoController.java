@@ -15,7 +15,7 @@ import javafx.scene.control.TextField;
  * @author stianreistadrogeberg
  */
 public class CryptoController {
-    private ClassicCryptography c;
+    private final ClassicCryptography c;
     private boolean encMode;
     
     @FXML public TextField inputString;
@@ -36,7 +36,8 @@ public class CryptoController {
             String cipherText = c.encrypt(inputString.getText(), getKey());
             outputResult.setText(cipherText);
         } else {
-            //c.decrypt("", getKey());
+            String plaintext = c.decrypt(inputString.getText(), getKey());
+            outputResult.setText(plaintext);
             System.out.println("dekryptere");
         }
     }
