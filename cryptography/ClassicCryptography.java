@@ -31,8 +31,7 @@ public class ClassicCryptography {
         int next = 0;
         
         while(a < temp) {
-            alpha[next++] = (char) a;
-            a++;
+            alpha[next++] = (char) a++;
         }
         return alpha;
     }

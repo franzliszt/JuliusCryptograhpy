@@ -38,12 +38,7 @@ public class CryptoController {
         } else {
             String plaintext = c.decrypt(inputString.getText(), getKey());
             outputResult.setText(plaintext);
-            System.out.println("dekryptere");
         }
-    }
-    
-    private String getInput() {
-        return inputString.getText();
     }
     
     private int getKey() {
@@ -62,6 +57,4 @@ public class CryptoController {
             encrypt.setText("Decrypt");
         }
     }
-
-    
 }
