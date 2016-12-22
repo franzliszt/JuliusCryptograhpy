@@ -64,6 +64,7 @@ public class CryptoController {
     @FXML
     public void toggleMode() {
         encMode = !encMode;
+        resetFields();
         
         if(encMode) {
             encrypt.setText("Encrypt");
