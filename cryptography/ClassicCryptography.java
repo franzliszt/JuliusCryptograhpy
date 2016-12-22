@@ -57,7 +57,7 @@ public class ClassicCryptography {
                 }
             }
         }
-        return ciphertext;
+        return ciphertext.toUpperCase();
     }
     
     /**
@@ -82,6 +82,6 @@ public class ClassicCryptography {
                 }
             }
         }
-        return plaintext;
+        return plaintext.toUpperCase();
     }
 }
