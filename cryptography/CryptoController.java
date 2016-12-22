@@ -32,13 +32,27 @@ public class CryptoController {
     
     @FXML
     public void encryptionMode() {
-        if(encMode) {
-            String cipherText = c.encrypt(inputString.getText(), getKey());
+        String userInput = inputString.getText().toLowerCase();
+        boolean ok = checkInput(userInput);
+        
+        if(encMode && ok) {
+            String cipherText = c.encrypt(userInput, getKey());
             outputResult.setText(cipherText);
-        } else {
-            String plaintext = c.decrypt(inputString.getText(), getKey());
+        } 
+        
+        if(!encMode && ok){
+            String plaintext = c.decrypt(userInput, getKey());
             outputResult.setText(plaintext);
         }
+    }
+    
+    private void resetFields() {
+        inputString.setText("");
+        encryptionKey.setText("");
+    }
+    
+    private boolean checkInput(String input) {
+        return input.matches("[a-z]+");
     }
     
     private int getKey() {
