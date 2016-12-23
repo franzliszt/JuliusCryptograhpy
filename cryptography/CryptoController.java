@@ -32,17 +32,17 @@ public class CryptoController {
     
     @FXML
     public void encryptionMode() {
-        String userInput = inputString.getText().toLowerCase();
+        String userInput = inputString.getText();
         boolean ok = checkInput(userInput, encryptionKey.getText());
         
         if(encMode && ok) {
-            String cipherText = c.encrypt(userInput, getKey());
-            outputResult.setText(cipherText);
+            String cipherText = c.encrypt(userInput.toUpperCase(), getKey());
+            outputResult.setText(cipherText.toUpperCase());
         } 
         
         if(!encMode && ok){
-            String plaintext = c.decrypt(userInput, getKey());
-            outputResult.setText(plaintext);
+            String plaintext = c.decrypt(userInput.toUpperCase(), getKey());
+            outputResult.setText(plaintext.toUpperCase());
         }
     }
     
@@ -52,7 +52,7 @@ public class CryptoController {
     }
     
     private boolean checkInput(String input, String key) {
-        return input.matches("[a-z]+") && key.matches("[0-9]");
+        return input.matches("[a-zA-Z]+") && key.matches("[0-9]");
     }
     
     private int getKey() {
