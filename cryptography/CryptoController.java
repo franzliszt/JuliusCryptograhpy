@@ -38,13 +38,11 @@ public class CryptoController {
         if(encMode && ok) {
             String cipherText = c.encrypt(userInput, getKey());
             outputResult.setText(cipherText);
-            resetFields();
         } 
         
         if(!encMode && ok){
             String plaintext = c.decrypt(userInput, getKey());
             outputResult.setText(plaintext);
-            resetFields();
         }
     }
     
