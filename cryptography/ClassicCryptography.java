@@ -25,7 +25,7 @@ public class ClassicCryptography {
      * @return 
      */
     private char[] initAlphabet(char[] alpha) {
-        char a = 'a';
+        char a = 'A';
         int temp = 26 + (int) a;
         alpha = new char[26];
         int next = 0;
@@ -44,20 +44,20 @@ public class ClassicCryptography {
      */
     public String encrypt(String plaintext, int encryptionKey) {
         char[] plain = plaintext.toCharArray();
-        String ciphertext = "";
+        StringBuilder ciphertext = new StringBuilder();
         
         for(int i = 0; i < plain.length; i++) {
             for(int j = 0; j < alphabet.length; j++) {
                 if(plain[i] == alphabet[j]) {
                     if(j + encryptionKey >= alphabet.length) {
-                        ciphertext += alphabet[j + encryptionKey - alphabet.length];
+                        ciphertext.append(alphabet[j + encryptionKey - alphabet.length]);
                     } else {
-                        ciphertext += alphabet[j + encryptionKey]; 
+                        ciphertext.append(alphabet[j + encryptionKey]);
                     }
                 }
             }
         }
-        return ciphertext.toUpperCase();
+        return ciphertext.toString();
     }
     
     /**
@@ -69,19 +69,19 @@ public class ClassicCryptography {
      */
     public String decrypt(String ciphertext, int key) {
         char[] cipher = ciphertext.toCharArray();
-        String plaintext = "";
+        StringBuilder plaintext = new StringBuilder();
         
         for(int i = 0; i < cipher.length; i++) {
             for(int j = 0; j < alphabet.length; j++) {
                 if(cipher[i] == alphabet[j]) {
                     if(j - key < 0) {
-                        plaintext += alphabet[j - key + alphabet.length];
+                        plaintext.append(alphabet[j - key + alphabet.length]);
                     } else {
-                        plaintext += alphabet[j - key];
+                        plaintext.append(alphabet[j - key]);
                     }
                 }
             }
         }
-        return plaintext.toUpperCase();
+        return plaintext.toString();
     }
 }
