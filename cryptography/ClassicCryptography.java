@@ -7,7 +7,7 @@ package cryptography;
 
 /**
  *
- * @author stianreistadrogeberg
+ * @author Stian Reistad Røgeberg
  */
 public class ClassicCryptography {
     private char[] alphabet;
@@ -30,7 +30,7 @@ public class ClassicCryptography {
         alpha = new char[26];
         int next = 0;
         
-        while(a < temp) {
+        while (a < temp) {
             alpha[next++] = (char) a++;
         }
         return alpha;
@@ -46,10 +46,10 @@ public class ClassicCryptography {
         char[] plain = plaintext.toCharArray();
         StringBuilder ciphertext = new StringBuilder();
         
-        for(int i = 0; i < plain.length; i++) {
-            for(int j = 0; j < alphabet.length; j++) {
-                if(plain[i] == alphabet[j]) {
-                    if(j + encryptionKey >= alphabet.length) {
+        for (int i = 0; i < plain.length; i++) {
+            for (int j = 0; j < alphabet.length; j++) {
+                if (plain[i] == alphabet[j]) {
+                    if ((j + encryptionKey) >= alphabet.length) {
                         ciphertext.append(alphabet[j + encryptionKey - alphabet.length]);
                     } else {
                         ciphertext.append(alphabet[j + encryptionKey]);
@@ -71,10 +71,10 @@ public class ClassicCryptography {
         char[] cipher = ciphertext.toCharArray();
         StringBuilder plaintext = new StringBuilder();
         
-        for(int i = 0; i < cipher.length; i++) {
-            for(int j = 0; j < alphabet.length; j++) {
-                if(cipher[i] == alphabet[j]) {
-                    if(j - key < 0) {
+        for (int i = 0; i < cipher.length; i++) {
+            for (int j = 0; j < alphabet.length; j++) {
+                if (cipher[i] == alphabet[j]) {
+                    if ((j - key) < 0) {
                         plaintext.append(alphabet[j - key + alphabet.length]);
                     } else {
                         plaintext.append(alphabet[j - key]);
